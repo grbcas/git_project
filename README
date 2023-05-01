@@ -1,0 +1,110 @@
+ubuntu@hp13:~/git_project$ touch ./src/main.py
+ubuntu@hp13:~/git_project$ git add .
+ubuntu@hp13:~/git_project$ git commit -m 'add src/main.py'
+[main 03b9765] add src/main.py
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 src/main.py
+ubuntu@hp13:~/git_project$ touch ./tests/test_basic.py
+ubuntu@hp13:~/git_project$ git add .
+ubuntu@hp13:~/git_project$ git commit -m 'add tests/test_basic.py'
+[main a42ed5a] add tests/test_basic.py
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 tests/test_basic.py
+ubuntu@hp13:~/git_project$ ll
+total 24
+drwxr-xr-x  5 ubuntu ubuntu 4096 May  2 00:58 ./
+drwxr-xr-x 16 ubuntu ubuntu 4096 May  2 00:49 ../
+drwxr-xr-x  8 ubuntu ubuntu 4096 May  2 01:00 .git/
+-rw-r--r--  1 ubuntu ubuntu 1800 May  2 00:49 .gitignore
+-rw-r--r--  1 ubuntu ubuntu    0 May  2 00:41 README
+drwxr-xr-x  2 ubuntu ubuntu 4096 May  2 00:59 src/
+drwxr-xr-x  2 ubuntu ubuntu 4096 May  2 01:00 tests/
+ubuntu@hp13:~/git_project$ tree
+.
+├── README
+├── src
+│   └── main.py
+└── tests
+    └── test_basic.py
+
+2 directories, 3 files
+ubuntu@hp13:~/git_project$ git log
+commit a42ed5a3e602731474c8f2a0cdaf05d9064e49b2 (HEAD -> main)
+Author: grbcas <grbcas@gmail.com>
+Date:   Tue May 2 01:00:29 2023 +0300
+
+    add tests/test_basic.py
+
+commit 03b976521afd889141255c30be63bdf59acedae5
+Author: grbcas <grbcas@gmail.com>
+Date:   Tue May 2 00:59:44 2023 +0300
+
+    add src/main.py
+
+commit adced310f18d679634cd1770fa08d23710ed7aac
+Author: grbcas <grbcas@gmail.com>
+Date:   Tue May 2 00:50:37 2023 +0300
+
+    add .gitignore
+
+commit 7f48743b092201f73dd9e3201108c4365734dc0d (origin/main)
+Author: grbcas <grbcas@gmail.com>
+Date:   Tue May 2 00:42:31 2023 +0300
+
+    README
+
+commit 59b0b885a8dc7f0849b50af9940a3cd7d90da5f6
+Author: grbcas <grbcas@gmail.com>
+Date:   Thu Apr 27 16:57:53 2023 +0300
+
+ubuntu@hp13:~/git_project$ cat > ./src/main.py << EOF
+> #!/bin/python3
+> print('Hellow word')
+> EOF
+ubuntu@hp13:~/git_project$ chmod +x ./src/main.py
+ubuntu@hp13:~/git_project$ ./src/main.py
+Hellow word
+ubuntu@hp13:~/git_project$ git add .
+ubuntu@hp13:~/git_project$ git commit -m './src/main.py -> Hellow word'
+[main 292fc61] ./src/main.py -> Hellow word
+ 1 file changed, 2 insertions(+)
+ mode change 100644 => 100755 src/main.py
+ubuntu@hp13:~/git_project$ git push
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (13/13), 2.07 KiB | 1.03 MiB/s, done.
+Total 13 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), done.
+To github.com:grbcas/git_project.git
+   7f48743..292fc61  main -> main
+ubuntu@hp13:~/git_project$ cat > ./src/main.py << EOF
+#!/bin/python3
+
+print('Hellow Linux')
+EOF
+ubuntu@hp13:~/git_project$ ./src/main.py
+Hellow Linux
+ubuntu@hp13:~/git_project$ git commit -am './src/main.py -> Hellow Linux'
+[main 555bbf5] ./src/main.py -> Hellow Linux
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+ubuntu@hp13:~/git_project$ git log --oneline
+555bbf5 (HEAD -> main) ./src/main.py -> Hellow Linux
+292fc61 (origin/main) ./src/main.py -> Hellow word
+a42ed5a add tests/test_basic.py
+03b9765 add src/main.py
+adced31 add .gitignore
+7f48743 README
+59b0b88 added ./src/main.py
+ubuntu@hp13:~/git_project$ git reset HEAD~
+Unstaged changes after reset:
+M       src/main.py
+ubuntu@hp13:~/git_project$ git log --oneline
+292fc61 (HEAD -> main, origin/main) ./src/main.py -> Hellow word
+a42ed5a add tests/test_basic.py
+03b9765 add src/main.py
+adced31 add .gitignore
+7f48743 README
+59b0b88 added ./src/main.py
+ubuntu@hp13:~/git_project$
