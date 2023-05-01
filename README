@@ -108,3 +108,19 @@ adced31 add .gitignore
 7f48743 README
 59b0b88 added ./src/main.py
 ubuntu@hp13:~/git_project$
+
+
+ubuntu@hp13:~/git_project$ git revert 292fc61
+[main 8298173] Revert "./src/main.py -> Hellow word"
+ 1 file changed, 2 deletions(-)
+ mode change 100755 => 100644 src/main.py
+ubuntu@hp13:~/git_project$ tree
+.
+├── README
+├── src
+│   └── main.py
+└── tests
+    └── test_basic.py
+
+2 directories, 3 files
+ubuntu@hp13:~/git_project$ cat ./src/main.py
